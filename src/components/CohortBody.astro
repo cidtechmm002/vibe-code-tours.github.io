@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import { t, getLocale, type Locale } from "../i18n/utils";
 import BuilderCard from "./BuilderCard.astro";
+import { isPlaceholderIdentity } from "../lib/builder-identity.mjs";
 
 interface Props {
   cohort: number;
@@ -13,14 +14,9 @@ const s = t(locale).cohortPage;
 
 // All builders for this cohort. Render each markdown body to HTML for the card.
 // Reject placeholder identities — a profile with no real name/github is not shown.
-const PLACEHOLDER =
-  /^(your[ _-]?name|your[ _-]?github[ _-]?username|your[ _-]?username)$/i;
 const all = await getCollection(
   "builders",
-  (b) =>
-    b.data.cohort === cohort &&
-    !PLACEHOLDER.test(b.data.name.trim()) &&
-    !PLACEHOLDER.test(b.data.github.trim()),
+  (b) => b.data.cohort === cohort && !isPlaceholderIdentity(b.data),
 );
 
 // Instructors/mentors first, then builders; stable by name within group.
