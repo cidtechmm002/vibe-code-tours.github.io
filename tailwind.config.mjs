@@ -23,6 +23,8 @@ export default {
         },
       },
       fontFamily: {
+        // Latin renders in Inter; Myanmar glyphs fall through to MyanmarSquare
+        // (matched by unicode-range in @font-face). Both weights preserved.
         sans: [
           "Inter",
           "system-ui",
@@ -31,12 +33,11 @@ export default {
           "Roboto",
           "Helvetica",
           "Arial",
-          "Pyidaungsu",
-          "Noto Sans Myanmar",
+          "MyanmarSquare",
           "sans-serif",
         ],
-        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
-        my: ["Pyidaungsu", "Noto Sans Myanmar", "system-ui", "sans-serif"],
+        // Code/tags: JetBrains Mono for Latin, MyanmarSabae for Myanmar.
+        mono: ["JetBrains Mono", "MyanmarSabae", "ui-monospace", "monospace"],
       },
       maxWidth: {
         prose: "70ch",

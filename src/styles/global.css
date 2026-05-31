@@ -1,24 +1,23 @@
-@import "@fontsource/noto-sans-myanmar/400.css";
-@import "@fontsource/noto-sans-myanmar/600.css";
-@import "@fontsource/noto-sans-myanmar/700.css";
-
+/* Myanmar fonts — scoped to Myanmar Unicode blocks via unicode-range so Latin
+   text always uses Inter / JetBrains Mono at full weights. Self-hosted woff2.
+   MyanmarSquare     -> pairs with Inter (body, headings)
+   MyanmarSabae      -> pairs with JetBrains Mono (code, tags) */
 @font-face {
-  font-family: "Pyidaungsu";
+  font-family: "MyanmarSquare";
   src:
-    local("Pyidaungsu"),
-    url("/fonts/pyidaungsu/Pyidaungsu-Regular.woff2") format("woff2");
-  font-weight: 400;
+    local("Myanmar Square"),
+    url("/fonts/myanmar-square/MyanmarSquare.woff2") format("woff2");
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
   unicode-range: U+1000-109F, U+AA60-AA7F, U+A9E0-A9FF, U+200C-200D, U+25CC;
 }
 @font-face {
-  font-family: "Pyidaungsu";
+  font-family: "MyanmarSabae";
   src:
-    local("Pyidaungsu Book"),
-    local("Pyidaungsu"),
-    url("/fonts/pyidaungsu/Pyidaungsu-Bold.woff2") format("woff2");
-  font-weight: 700;
+    local("Myanmar Sabae"),
+    url("/fonts/myanmar-sabae/MyanmarSabae.woff2") format("woff2");
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
   unicode-range: U+1000-109F, U+AA60-AA7F, U+A9E0-A9FF, U+200C-200D, U+25CC;
@@ -44,7 +43,7 @@
     );
     background-size: 24px 24px;
   }
-  /* Myanmar glyphs auto-render in Pyidaungsu via unicode-range (see @font-face).
+  /* Myanmar glyphs auto-render in MyanmarSquare via unicode-range (see @font-face).
      Latin stays Inter at all weights. Only relax line-height for MY pages. */
   html[lang="my"] body {
     @apply leading-relaxed;
